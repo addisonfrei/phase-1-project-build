@@ -13,7 +13,7 @@
     <title>Phase 1 Project</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="search-field">
         <h1 class="yellow-text text-darken-4">Find your brewery!</h1>
         <form class="search-brewery">
             <h2>Choose an option below to search breweries.</h2>
@@ -27,8 +27,11 @@
             <input type="submit" name="submit" value="Search by state" class="submit" />
             <br />
             <input type="text" name="type" value="" placeholder="Search by brewery type(micro, nano, brewpub, regional)..." class="input-text" />
-            <input type="submit" name="submit" value="Search by type" class="submit" />
+            <button type="submit" id="submit-type" name="submit-type" value="Search by type" class="submit">Search by type</button> 
         </form>
+    </div>
+    <div class="cards" id="brew-card">
+
     </div>
 
     
