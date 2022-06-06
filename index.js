@@ -78,12 +78,14 @@ state.addEventListener('click', e => {
 type.addEventListener('click', e => {
     e.preventDefault()
     console.log(inputType.value)
+    let value = inputType.value.toLowerCase()
     catalog.innerHTML = ''
-    fetch(`https://api.openbrewerydb.org/breweries?by_type=${inputType.value}&per_page=25`)
+    fetch(`https://api.openbrewerydb.org/breweries?by_type=${value}&per_page=25`)
     .then(response => response.json())
     .then(item => {
         addCard(item)
-    });
+    })
+    .catch(() => alert('Error: This term is not available.  Please use one of search terms listed.'))
     inputType.value = ''
 })
 
