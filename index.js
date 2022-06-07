@@ -27,6 +27,7 @@ function addCard(item) {
         const a = document.createElement('a')
         const catalog = document.querySelector('#brew-card')
         card.classList.add('card')
+        card.style.background ='lightgray'
         catalog.appendChild(card)
         card.appendChild(h3)
         h3.innerText = item.name
