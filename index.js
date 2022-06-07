@@ -79,17 +79,17 @@ city.addEventListener('click', e => {
     inputCity.value = ''
 })
 
-state.addEventListener('click', e => {
-    e.preventDefault()
-    console.log(inputState.value)
-    catalog.innerHTML = ''
-    fetch(`https://api.openbrewerydb.org/breweries?by_state=${inputState.value}&per_page=25`)
-    .then(response => response.json())
-    .then(item => {
-        addCard(item)
-    });
-    inputState.value = ''
-})
+// state.addEventListener('click', e => {
+//     e.preventDefault()
+//     console.log(inputState.value)
+//     catalog.innerHTML = ''
+//     fetch(`https://api.openbrewerydb.org/breweries?by_state=${inputState.value}&per_page=25`)
+//     .then(response => response.json())
+//     .then(item => {
+//         addCard(item)
+//     });
+//     inputState.value = ''
+// })
 
 type.addEventListener('click', e => {
     e.preventDefault()
@@ -111,21 +111,21 @@ document.querySelector('#submit-clear').addEventListener('click', e => {
 })
 
 
-// document.addEventListener('click', function (e) {
-//     if (e.target.tagName == 'path') {
-//         var content = e.target.dataset.name;
-//         console.log(content);
-//         e.preventDefault()
-//         catalog.innerHTML = ''
-//         fetch(`https://api.openbrewerydb.org/breweries?by_state=${content}&per_page=25`)
-//         .then(response => response.json())
-//         .then(item => {
-//         addCard(item)
-//         });
-//         inputState.value = ''
-//         }
+document.addEventListener('click', function (e) {
+    if (e.target.tagName == 'path') {
+        var content = e.target.dataset.name;
+        console.log(content);
+        e.preventDefault()
+        catalog.innerHTML = ''
+        fetch(`https://api.openbrewerydb.org/breweries?by_state=${content}&per_page=25`)
+        .then(response => response.json())
+        .then(item => {
+        addCard(item)
+        });
+        inputState.value = ''
+        }
     
-// });
+});
 
 
 
