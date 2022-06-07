@@ -103,7 +103,7 @@ type.addEventListener('click', e => {
     inputType.value = ''
 })
 
-
+window.addEventListener('DOMContentLoaded', ofAge)
 
 
 
