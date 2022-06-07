@@ -42,9 +42,14 @@ function addCard(item) {
             setTimeout(() => {
                 e.target.style.background = '#A7B1B7'
             }, 3000)
-        }, false)
+        }, false);
+        
     }
 }
+function ofAge() {
+    alert('Must be 21 or older to view this site')
+}
+
 
 // EVENT LISTENERS
 brewName.addEventListener('click', e => {
@@ -94,7 +99,7 @@ type.addEventListener('click', e => {
     .then(item => {
         addCard(item)
     })
-    .catch(() => alert('Error: This term is not available.  Please use one of search terms listed.'))
+    .catch(() => alert('Error: This search term is not available.  Please use one of search terms listed.'))
     inputType.value = ''
 })
 
