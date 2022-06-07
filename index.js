@@ -21,7 +21,7 @@ function addCard(item) {
     for(item of item) {
         const card = document.createElement('div')
         const h3 = document.createElement('h3')
-        h3.style.color = 'goldenrod'
+        h3.style.color = '#ffffff'
         const ul = document.createElement('ul')
         const li = document.createElement('li')
         const a = document.createElement('a')
