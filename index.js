@@ -52,6 +52,8 @@ function ofAge() {
 
 
 // EVENT LISTENERS
+window.addEventListener('DOMContentLoaded', ofAge)
+
 brewName.addEventListener('click', e => {
     e.preventDefault()
     console.log(inputName.value)
@@ -103,7 +105,10 @@ type.addEventListener('click', e => {
     inputType.value = ''
 })
 
-window.addEventListener('DOMContentLoaded', ofAge)
+document.querySelector('#submit-clear').addEventListener('click', e => {
+    e.preventDefault()
+    catalog.innerHTML = ''
+})
 
 
 
