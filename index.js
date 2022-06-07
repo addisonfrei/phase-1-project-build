@@ -27,7 +27,7 @@ function addCard(item) {
         const a = document.createElement('a')
         const catalog = document.querySelector('#brew-card')
         card.classList.add('card')
-        card.style.background ='#B0B7BC'
+        card.style.background ='#A7B1B7'
         catalog.appendChild(card)
         card.appendChild(h3)
         h3.innerText = item.name
@@ -45,7 +45,7 @@ brewName.addEventListener('click', e => {
     e.preventDefault()
     console.log(inputName.value)
     catalog.innerHTML = ''
-    fetch(`https://api.openbrewerydb.org/breweries?by_name=${inputName.value}&per_page=3`)
+    fetch(`https://api.openbrewerydb.org/breweries?by_name=${inputName.value}&per_page=25`)
     .then(response => response.json())
     .then(item => {
         addCard(item)
