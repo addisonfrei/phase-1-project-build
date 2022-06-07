@@ -1,11 +1,11 @@
 // Add forward and back buttons at the bottom to advance through searches
 
 // CONST
-// const card = document.createElement('div')
-// const h3 = document.createElement('h3')
-// const ul = document.createElement('ul')
-// const li = document.createElement('li')
-// const p = document.createElement('p')
+const card = document.createElement('div')
+const h3 = document.createElement('h3')
+const ul = document.createElement('ul')
+const li = document.createElement('li')
+const p = document.createElement('p')
 const catalog = document.querySelector('#brew-card')
 const type = document.querySelector('#submit-type')
 const state = document.querySelector('#submit-state')
@@ -37,6 +37,12 @@ function addCard(item) {
         a.setAttribute('href', `${item.website_url}`)
         a.textContent = `Link to ${item.name}`
         card.appendChild(a)
+        h3.addEventListener('mouseover', e => {
+            e.target.style.background = 'black ';
+            setTimeout(() => {
+                e.target.style.background = '#A7B1B7'
+            }, 3000)
+        }, false)
     }
 }
 
