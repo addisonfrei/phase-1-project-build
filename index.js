@@ -1,11 +1,11 @@
 // Add forward and back buttons at the bottom to advance through searches
 
 // CONST
-const card = document.createElement('div')
-const h3 = document.createElement('h3')
-const ul = document.createElement('ul')
-const li = document.createElement('li')
-const p = document.createElement('p')
+// const card = document.createElement('div')
+// const h3 = document.createElement('h3')
+// const ul = document.createElement('ul')
+// const li = document.createElement('li')
+// const p = document.createElement('p')
 const catalog = document.querySelector('#brew-card')
 const type = document.querySelector('#submit-type')
 const state = document.querySelector('#submit-state')
@@ -21,9 +21,10 @@ function addCard(item) {
     for(item of item) {
         const card = document.createElement('div')
         const h3 = document.createElement('h3')
+        h3.style.color = 'goldenrod'
         const ul = document.createElement('ul')
         const li = document.createElement('li')
-        const p = document.createElement('p')
+        const a = document.createElement('a')
         const catalog = document.querySelector('#brew-card')
         card.classList.add('card')
         catalog.appendChild(card)
@@ -32,8 +33,9 @@ function addCard(item) {
         card.appendChild(ul)
         ul.appendChild(li)
         li.innerText = `Address: ${item.street} \n City: ${item.city} \n State: ${item.state} \n Zip: ${item.postal_code} \n Phone: ${item.phone}`
-        card.appendChild(p)
-        p.innerText = `URL: ${item.website_url}`
+        a.setAttribute('href', `${item.website_url}`)
+        a.textContent = `Link to ${item.name}`
+        card.appendChild(a)
     }
 }
 
@@ -88,6 +90,8 @@ type.addEventListener('click', e => {
     .catch(() => alert('Error: This term is not available.  Please use one of search terms listed.'))
     inputType.value = ''
 })
+
+
 
 
 
