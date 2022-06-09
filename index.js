@@ -15,6 +15,8 @@ const inputType = document.querySelector('#input-type')
 const inputName = document.querySelector('#input-name')
 const inputCity = document.querySelector('#input-city')
 const inputState = document.querySelector('#input-state')
+let page = 1
+
 
 // FUNCTIONS
 function addCard(item) {
@@ -45,6 +47,20 @@ function addCard(item) {
         }, false);
         
     }
+    const prevButton = document.createElement('button')
+    catalog.appendChild(prevButton)
+    prevButton.textContent = 'Previous'
+    prevButton.id = 'previous'
+    const nextButton = document.createElement('button')
+    catalog.appendChild(nextButton)
+    nextButton.textContent = 'Next'
+    nextButton.id = 'next'
+    nextButton.addEventListener('click', e => {
+        console.log(e)
+    })
+    prevButton.addEventListener('click', e => {
+        console.log(e)
+    })
 }
 function ofAge() {
     alert('Must be 21 or older to view this site')
@@ -116,15 +132,13 @@ document.addEventListener('click', function (e) {
         var content = e.target.dataset.name;
         console.log(content);
         e.preventDefault()
-        catalog.innerHTML = ''
+        catalog.innerHTML = ''     
         fetch(`https://api.openbrewerydb.org/breweries?by_state=${content}&per_page=25`)
         .then(response => response.json())
         .then(item => {
         addCard(item)
         });
-        inputState.value = ''
         }
-    
 });
 
 
