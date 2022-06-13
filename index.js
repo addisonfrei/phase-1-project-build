@@ -85,7 +85,7 @@ brewName.addEventListener('click', e => {
 
 city.addEventListener('click', e => {
     e.preventDefault()
-    console.log(inputCity.value)
+    console.log('city:', inputCity.value)
     catalog.innerHTML = ''
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${inputCity.value}&per_page=25`)
     .then(response => response.json())
@@ -140,6 +140,9 @@ document.addEventListener('click', function (e) {
         });
         }
 });
+
+
+
 
 
 
