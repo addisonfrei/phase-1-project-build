@@ -1,5 +1,5 @@
 # Brewery Locator Project
-The Brewery Locator is my first project for Flatiron School.  This is the phase-1 project. This can be used to search for breweries using name, city, state, or type of brewery.  
+The Brewery Locator is my first project for Flatiron School. This app can be used to search for breweries using name, city, state, or type of brewery.  
 
 ### Features
 * User can search for a brewery using search field

@@ -15,7 +15,7 @@ const inputType = document.querySelector('#input-type')
 const inputName = document.querySelector('#input-name')
 const inputCity = document.querySelector('#input-city')
 const inputState = document.querySelector('#input-state')
-let page = 1
+
 
 
 // FUNCTIONS
@@ -47,20 +47,6 @@ function addCard(item) {
         }, false);
         
     }
-    const prevButton = document.createElement('button')
-    catalog.appendChild(prevButton)
-    prevButton.textContent = 'Previous'
-    prevButton.id = 'previous'
-    const nextButton = document.createElement('button')
-    catalog.appendChild(nextButton)
-    nextButton.textContent = 'Next'
-    nextButton.id = 'next'
-    nextButton.addEventListener('click', e => {
-        console.log(e)
-    })
-    prevButton.addEventListener('click', e => {
-        console.log(e)
-    })
 }
 function ofAge() {
     alert('Must be 21 or older to view this site')
@@ -77,6 +63,7 @@ brewName.addEventListener('click', e => {
     fetch(`https://api.openbrewerydb.org/breweries?by_name=${inputName.value}&per_page=25`)
     .then(response => response.json())
     .then(item => {
+        //console.log(item)
         addCard(item)
         }
     );
@@ -94,7 +81,7 @@ city.addEventListener('click', e => {
     });
     inputCity.value = ''
 })
-
+// State not used do to adding interactive map 
 // state.addEventListener('click', e => {
 //     e.preventDefault()
 //     console.log(inputState.value)
@@ -127,18 +114,18 @@ document.querySelector('#submit-clear').addEventListener('click', e => {
 })
 
 
-document.addEventListener('click', function (e) {
+document.addEventListener('click', e => {
     if (e.target.tagName == 'path') {
         var content = e.target.dataset.name;
         console.log(content);
-        e.preventDefault()
         catalog.innerHTML = ''     
         fetch(`https://api.openbrewerydb.org/breweries?by_state=${content}&per_page=25`)
         .then(response => response.json())
         .then(item => {
-        addCard(item)
+            addCard(item)
         });
         }
+       
 });
 
 
