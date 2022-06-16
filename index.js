@@ -19,8 +19,8 @@ const inputState = document.querySelector('#input-state')
 
 
 // FUNCTIONS
-function addCard(item) {
-    for(item of item) {
+function addCard(items) {
+    items.forEach(item => {
         const card = document.createElement('div')
         const h3 = document.createElement('h3')
         h3.style.color = '#ffffff'
@@ -44,9 +44,8 @@ function addCard(item) {
             setTimeout(() => {
                 e.target.style.background = '#A7B1B7'
             }, 3000)
-        }, false);
-        
-    }
+        }, false); 
+    });
 }
 function ofAge() {
     alert('Must be 21 or older to view this site')
@@ -62,9 +61,9 @@ brewName.addEventListener('click', e => {
     catalog.innerHTML = ''
     fetch(`https://api.openbrewerydb.org/breweries?by_name=${inputName.value}&per_page=25`)
     .then(response => response.json())
-    .then(item => {
+    .then(items => {
         //console.log(item)
-        addCard(item)
+        addCard(items)
         }
     );
     inputName.value = ''
@@ -76,8 +75,8 @@ city.addEventListener('click', e => {
     catalog.innerHTML = ''
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${inputCity.value}&per_page=25`)
     .then(response => response.json())
-    .then(item => {
-        addCard(item)
+    .then(items => {
+        addCard(items)
     });
     inputCity.value = ''
 })
@@ -88,8 +87,8 @@ city.addEventListener('click', e => {
 //     catalog.innerHTML = ''
 //     fetch(`https://api.openbrewerydb.org/breweries?by_state=${inputState.value}&per_page=25`)
 //     .then(response => response.json())
-//     .then(item => {
-//         addCard(item)
+//     .then(items => {
+//         addCard(items)
 //     });
 //     inputState.value = ''
 // })
@@ -101,8 +100,8 @@ type.addEventListener('click', e => {
     catalog.innerHTML = ''
     fetch(`https://api.openbrewerydb.org/breweries?by_type=${value}&per_page=25`)
     .then(response => response.json())
-    .then(item => {
-        addCard(item)
+    .then(items => {
+        addCard(items)
     })
     .catch(() => alert('Error: This search term is not available.  Please use one of search terms listed.'))
     inputType.value = ''
@@ -121,11 +120,10 @@ document.addEventListener('click', e => {
         catalog.innerHTML = ''     
         fetch(`https://api.openbrewerydb.org/breweries?by_state=${content}&per_page=25`)
         .then(response => response.json())
-        .then(item => {
-            addCard(item)
+        .then(items => {
+            addCard(items)
         });
-        }
-       
+        }  
 });
 
 
