@@ -16,8 +16,6 @@ const inputName = document.querySelector('#input-name')
 const inputCity = document.querySelector('#input-city')
 const inputState = document.querySelector('#input-state')
 
-
-
 // FUNCTIONS
 function addCard(items) {
     items.forEach(item => {
@@ -50,48 +48,38 @@ function addCard(items) {
 function ofAge() {
     alert('Must be 21 or older to view this site')
 }
-
+function getBrewery(type, value) {
+    catalog.innerHTML = ''
+    fetch(`https://api.openbrewerydb.org/breweries?by_${type}=${value}&per_page=25`)
+    .then(response => response.json())
+    .then(items => {
+        addCard(items)
+        }
+    );
+}
 
 // EVENT LISTENERS
 window.addEventListener('DOMContentLoaded', ofAge)
 
 brewName.addEventListener('click', e => {
     e.preventDefault()
-    console.log(inputName.value)
-    catalog.innerHTML = ''
-    fetch(`https://api.openbrewerydb.org/breweries?by_name=${inputName.value}&per_page=25`)
-    .then(response => response.json())
-    .then(items => {
-        //console.log(item)
-        addCard(items)
-        }
-    );
+    getBrewery('name', inputName.value)
     inputName.value = ''
 })
 
 city.addEventListener('click', e => {
     e.preventDefault()
-    console.log('city:', inputCity.value)
-    catalog.innerHTML = ''
-    fetch(`https://api.openbrewerydb.org/breweries?by_city=${inputCity.value}&per_page=25`)
-    .then(response => response.json())
-    .then(items => {
-        addCard(items)
-    });
-    inputCity.value = ''
+    getBrewery('city', inputCity.value)
 })
-// State not used do to adding interactive map 
-// state.addEventListener('click', e => {
-//     e.preventDefault()
-//     console.log(inputState.value)
-//     catalog.innerHTML = ''
-//     fetch(`https://api.openbrewerydb.org/breweries?by_state=${inputState.value}&per_page=25`)
-//     .then(response => response.json())
-//     .then(items => {
-//         addCard(items)
-//     });
-//     inputState.value = ''
-// })
+
+document.addEventListener('click', e => {
+    if (e.target.tagName == 'path') {
+        var content = e.target.dataset.name;
+        console.log(content);
+        catalog.innerHTML = ''  
+        getBrewery('state', content)   
+        }  
+});
 
 type.addEventListener('click', e => {
     e.preventDefault()
@@ -111,22 +99,6 @@ document.querySelector('#submit-clear').addEventListener('click', e => {
     e.preventDefault()
     catalog.innerHTML = ''
 })
-
-
-document.addEventListener('click', e => {
-    if (e.target.tagName == 'path') {
-        var content = e.target.dataset.name;
-        console.log(content);
-        catalog.innerHTML = ''     
-        fetch(`https://api.openbrewerydb.org/breweries?by_state=${content}&per_page=25`)
-        .then(response => response.json())
-        .then(items => {
-            addCard(items)
-        });
-        }  
-});
-
-
 
 
 
